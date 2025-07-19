@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gas Tracker
+
+A real-time, cross-chain gas price dashboard and wallet simulation tool for Ethereum, Polygon, and Arbitrum. Built with Next.js, Tailwind CSS, Zustand, Ethers.js, and Lightweight Charts.
+
+---
+
+## Features
+
+- **Live Gas Tracking:**  
+  Real-time gas prices for Ethereum, Polygon, and Arbitrum using WebSocket connections to native RPC endpoints.
+- **USD Pricing:**  
+  Live ETH/USD price from Uniswap V3 on Ethereum Mainnet.
+- **Candlestick Chart:**  
+  15-minute interval candlestick chart for Ethereum base fee volatility.
+- **Wallet Simulation:**  
+  Simulate transaction costs in USD for all three chains, with customizable transaction value and gas limit.
+- **Responsive UI:**  
+  Built with Next.js and Tailwind CSS for a modern, mobile-friendly experience.
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 1. **Clone the Repository**
+```sh
+git clone https://github.com/your-username/gas-tracker.git
+cd gas-tracker
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. **Install Dependencies**
+```sh
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. **Configure Environment Variables**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env.local` file in the project root with your WebSocket RPC endpoints:
+```
+NEXT_PUBLIC_ETHEREUM_RPC_WS=wss://YOUR_ETHEREUM_RPC_WS
+NEXT_PUBLIC_POLYGON_RPC_WS=wss://YOUR_POLYGON_RPC_WS
+NEXT_PUBLIC_ARBITRUM_RPC_WS=wss://YOUR_ARBITRUM_RPC_WS
+```
+> **Tip:** You can get free endpoints from [Alchemy](https://www.alchemy.com/), [Infura](https://infura.io/), or other providers.
 
-## Learn More
+### 4. **Run the Development Server**
+```sh
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+gas-tracker/
+├── src/
+│   ├── app/                # Next.js app directory (pages, layout, global styles)
+│   ├── components/         # React components (GasChart, GasPriceCard, SimulationPanel)
+│   ├── services/           # Data fetching and aggregation logic (gasService, usdPriceService)
+│   └── store/              # Zustand state management (gasStore)
+├── public/                 # Static assets
+├── tailwind.config.js      # Tailwind CSS configuration
+├── postcss.config.js       # PostCSS configuration
+├── package.json
+└── README.md
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Customization
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Add More Chains:**  
+  Extend the Zustand store and services to support additional EVM-compatible chains.
+- **Improve Charting:**  
+  Fetch and display historical gas data for richer charting.
+- **UI Enhancements:**  
+  Customize with your own branding, colors, or additional analytics.
+
+---
+
+## Troubleshooting
+
+- **No Styles?**  
+  Ensure `postcss.config.js` and `tailwind.config.js` are in the project root, and that `@tailwind` directives are present in `src/app/globals.css`.
+- **No Chart Data?**  
+  The chart will be empty until enough data is collected for a 15-minute interval, unless you implement historical data fetching.
+- **Font Errors?**  
+  If Google Fonts fail to load, the app will fall back to system fonts.
+
+---
+
+## License
+
+MIT
+
+---
+
+## Credits
+
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Ethers.js](https://docs.ethers.org/)
+- [Lightweight Charts](https://tradingview.github.io/lightweight-charts/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
+
+---
+
