@@ -23,7 +23,7 @@ A real-time, cross-chain gas price dashboard and wallet simulation tool for Ethe
 
 ### 1. **Clone the Repository**
 ```sh
-git clone https://github.com/your-username/gas-tracker.git
+git clone https://github.com/Sanjay-Kirti/gas-tracker.git
 cd gas-tracker
 ```
 
